@@ -11,7 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @Entity
 
-public class MouseModel {
+public class TecladoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -23,35 +23,11 @@ public class MouseModel {
     private int stock;
     private String inalambrico;
     private String color;
-    private int botonesCant;
-    private int dpiMin;
-    private int dpiMax;
+    private int dimension;
+    private String tipo;
+    private String switches;
     private String descripcion;
     private String urlImagen;
-
-    public String getInalambrico() {
-        return inalambrico;
-    }
-
-    public void setInalambrico(String inalambrico) {
-        this.inalambrico = inalambrico;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
-    public String getUrlImagen() {
-        return urlImagen;
-    }
-
-    public void setUrlImagen(String urlImagen) {
-        this.urlImagen = urlImagen;
-    }
 
     public int getId() {
         return id;
@@ -67,6 +43,14 @@ public class MouseModel {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public String getMarca() {
@@ -93,6 +77,13 @@ public class MouseModel {
         this.stock = stock;
     }
 
+    public String getInalambrico() {
+        return inalambrico;
+    }
+
+    public void setInalambrico(String inalambrico) {
+        this.inalambrico = inalambrico;
+    }
 
     public String getColor() {
         return color;
@@ -102,28 +93,28 @@ public class MouseModel {
         this.color = color;
     }
 
-    public int getBotonesCant() {
-        return botonesCant;
+    public int getDimension() {
+        return dimension;
     }
 
-    public void setBotonesCant(int botonesCant) {
-        this.botonesCant = botonesCant;
+    public void setDimension(int dimension) {
+        this.dimension = dimension;
     }
 
-    public int getDpiMin() {
-        return dpiMin;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setDpiMin(int dpiMin) {
-        this.dpiMin = dpiMin;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
-    public int getDpiMax() {
-        return dpiMax;
+    public String getSwitches() {
+        return switches;
     }
 
-    public void setDpiMax(int dpiMax) {
-        this.dpiMax = dpiMax;
+    public void setSwitches(String switches) {
+        this.switches = switches;
     }
 
     public String getDescripcion() {
@@ -132,5 +123,13 @@ public class MouseModel {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public String getUrlImagen() {
+        return urlImagen;
+    }
+
+    public void setUrlImagen(String urlImagen) {
+        this.urlImagen = urlImagen;
     }
 }

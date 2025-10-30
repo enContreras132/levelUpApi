@@ -11,7 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @Entity
 
-public class MouseModel {
+public class AudifonoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -24,34 +24,8 @@ public class MouseModel {
     private String inalambrico;
     private String color;
     private int botonesCant;
-    private int dpiMin;
-    private int dpiMax;
     private String descripcion;
     private String urlImagen;
-
-    public String getInalambrico() {
-        return inalambrico;
-    }
-
-    public void setInalambrico(String inalambrico) {
-        this.inalambrico = inalambrico;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
-    public String getUrlImagen() {
-        return urlImagen;
-    }
-
-    public void setUrlImagen(String urlImagen) {
-        this.urlImagen = urlImagen;
-    }
 
     public int getId() {
         return id;
@@ -67,6 +41,14 @@ public class MouseModel {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public String getMarca() {
@@ -93,6 +75,13 @@ public class MouseModel {
         this.stock = stock;
     }
 
+    public String getInalambrico() {
+        return inalambrico;
+    }
+
+    public void setInalambrico(String inalambrico) {
+        this.inalambrico = inalambrico;
+    }
 
     public String getColor() {
         return color;
@@ -110,27 +99,19 @@ public class MouseModel {
         this.botonesCant = botonesCant;
     }
 
-    public int getDpiMin() {
-        return dpiMin;
-    }
-
-    public void setDpiMin(int dpiMin) {
-        this.dpiMin = dpiMin;
-    }
-
-    public int getDpiMax() {
-        return dpiMax;
-    }
-
-    public void setDpiMax(int dpiMax) {
-        this.dpiMax = dpiMax;
-    }
-
     public String getDescripcion() {
         return descripcion;
     }
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public String getUrlImagen() {
+        return urlImagen;
+    }
+
+    public void setUrlImagen(String urlImagen) {
+        this.urlImagen = urlImagen;
     }
 }

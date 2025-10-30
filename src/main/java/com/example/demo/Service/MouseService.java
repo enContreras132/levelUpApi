@@ -16,8 +16,9 @@ public class MouseService {
     public String getAllMouse() {
         String output = "";
         for (MouseModel ad : mouseRepository.findAll()){
-            output += "id: "+ad.getIdMouse()+"\n";
+            output += "id: "+ad.getId()+"\n";
             output += "nombre: "+ad.getNombre()+"\n";
+            output += "categoria: "+ad.getCategoria();
             output += "marca: "+ad.getMarca()+"\n";
             output += "precio: "+ad.getPrecio()+"\n";
             output += "stock: "+ad.getStock()+"\n";
@@ -41,8 +42,9 @@ public class MouseService {
         String output = "";
         if (mouseRepository.existsById(id)){
             MouseModel ad = mouseRepository.findById(id).get();
-            output += "id: "+ad.getIdMouse()+"\n";
+            output += "id: "+ad.getId()+"\n";
             output += "nombre: "+ad.getNombre()+"\n";
+            output += "categoria: "+ad.getCategoria();
             output += "marca: "+ad.getMarca()+"\n";
             output += "precio: "+ad.getPrecio()+"\n";
             output += "stock: "+ad.getStock()+"\n";
