@@ -65,4 +65,32 @@ public class MouseService {
         mouseRepository.save(mouseModel);
         return "mouse agregegado";
     }
+
+    public String deleteMouse(int id){
+        if (mouseRepository.existsById(id)){
+            mouseRepository.deleteById(id);
+            return "mouse eliminado";
+        }else{
+            return "mouse no encontrado";
+        }
+    }
+
+    public String updateMouse(int id, MouseModel nuevosDatosMouse){
+        if (mouseRepository.existsById(id)){
+
+            MouseModel mouseExistente = mouseRepository.findById(id).get();
+
+            mouseExistente.setNombre(nuevosDatosMouse.getNombre());
+            mouseExistente.setCategoria(nuevosDatosMouse.getCategoria());
+            mouseExistente.setMarca(nuevosDatosMouse.getMarca());
+            mouseExistente.setPrecio(nuevosDatosMouse.getPrecio());
+
+            mouseRepository.save(mouseExistente);
+
+            return "Mouse actualizado exitosamente";
+        }
+        else {
+            return "Mouse no encontrado con ID: " + id;
+        }
+    }
 }

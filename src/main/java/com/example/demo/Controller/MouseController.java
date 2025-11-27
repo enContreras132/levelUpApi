@@ -26,4 +26,14 @@ public class MouseController {
     public  String addMouse(@RequestBody MouseModel mouseModel){
         return mouseService.addMouse(mouseModel);
     }
+
+    @DeleteMapping("/{id}")
+    public String deleteMouse(@PathVariable int id){
+        return mouseService.deleteMouse(id); // Llama al servicio con el ID
+    }
+
+    @PutMapping("/{id}")
+    public String updateMouse(@PathVariable int id, @RequestBody MouseModel mouse){
+        return mouseService.updateMouse(id, mouse);
+    }
 }
