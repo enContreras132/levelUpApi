@@ -37,7 +37,7 @@ public class JwtService {
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
-    // 3. Validar Token (Para ver si el usuario es quien dice ser)
+    // 3. Validar Token (Para ver si el usuario es o no el usuario)
     public String extractUsername(String token) {
         return Jwts.parserBuilder().setSigningKey(getSignKey()).build()
                 .parseClaimsJws(token).getBody().getSubject();

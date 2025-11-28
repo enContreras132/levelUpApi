@@ -4,8 +4,10 @@ package com.example.demo.Service;
 import com.example.demo.Model.NotebookModel;
 import com.example.demo.Repository.NotebookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @SuppressWarnings("null")
+@Service
 public class NotebookService {
 
     @Autowired

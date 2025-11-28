@@ -3,6 +3,11 @@ package com.example.demo.Service;
 import com.example.demo.Model.TecladoModel;
 import com.example.demo.Repository.TecladoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+@SuppressWarnings("null")
+@Service
 
 public class TecladoService {
 
