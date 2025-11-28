@@ -5,6 +5,7 @@ import com.example.demo.Model.NotebookModel;
 import com.example.demo.Repository.NotebookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+@SuppressWarnings("null")
 public class NotebookService {
 
     @Autowired
