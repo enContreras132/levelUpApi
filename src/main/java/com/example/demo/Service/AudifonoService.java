@@ -3,7 +3,10 @@ package com.example.demo.Service;
 import com.example.demo.Model.AudifonoModel;
 import com.example.demo.Repository.AudifonoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
+@SuppressWarnings("null")
 public class AudifonoService {
 
     @Autowired
