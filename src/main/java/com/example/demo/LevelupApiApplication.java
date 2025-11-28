@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import com.example.demo.security.JwtFilter; 
+import com.example.demo.security.JwtFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,22 +14,23 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class LevelupApiApplication {
 
     public static void main(String[] args) {
+        
+        System.out.println(" --- INICIANDO LA APLICACIÓN LEVELUP (VERSIÓN SEGURA) ---");
         SpringApplication.run(LevelupApiApplication.class, args);
     }
 
-    
-    
     @Autowired
     private JwtFilter jwtFilter;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        System.out.println("🔒 CARGANDO SEGURIDAD DESDE APP PRINCIPAL..."); 
+        // Si no ves este mensaje, la seguridad no se cargó
+        System.out.println("--- CARGANDO REGLAS DE SEGURIDAD Y JWT ---");
 
         http.csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/login").permitAll() // DEJA PASAR A LOGIN SIN TOKEN
-                .anyRequest().authenticated()          // EL RESTO PIDE TOKEN
+                .requestMatchers("/login").permitAll() 
+                .anyRequest().authenticated()
             )
             .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
