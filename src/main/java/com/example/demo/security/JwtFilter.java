@@ -34,7 +34,9 @@ public class JwtFilter extends OncePerRequestFilter {
             try {
                 username = jwtService.extractUsername(token);
             } catch (Exception e) {
-                // Token invalido
+                // Aqui se imprime para saber si el token es invalido o ha expirado
+                System.out.println("❌ ERROR EN EL TOKEN: " + e.getMessage());
+                e.printStackTrace(); 
             }
         }
 
