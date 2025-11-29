@@ -87,6 +87,14 @@ public class NotebookService {
             notebookExistente.setCategoria(nuevosDatosNotebook.getCategoria());
             notebookExistente.setMarca(nuevosDatosNotebook.getMarca());
             notebookExistente.setPrecio(nuevosDatosNotebook.getPrecio());
+            notebookExistente.setStock(nuevosDatosNotebook.getStock());
+            notebookExistente.setColor(nuevosDatosNotebook.getColor());
+            notebookExistente.setProcesador(nuevosDatosNotebook.getProcesador());
+            notebookExistente.setRam(nuevosDatosNotebook.getRam());
+            notebookExistente.setMemoria(nuevosDatosNotebook.getMemoria());
+            notebookExistente.setTarjetaVideo(nuevosDatosNotebook.getTarjetaVideo());
+            notebookExistente.setDescripcion(nuevosDatosNotebook.getDescripcion());
+            notebookExistente.setUrlImagen(nuevosDatosNotebook.getUrlImagen());
 
             NotebookRepository.save(notebookExistente);
 

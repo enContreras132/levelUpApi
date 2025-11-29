@@ -85,6 +85,16 @@ public class MouseService {
             mouseExistente.setCategoria(nuevosDatosMouse.getCategoria());
             mouseExistente.setMarca(nuevosDatosMouse.getMarca());
             mouseExistente.setPrecio(nuevosDatosMouse.getPrecio());
+            mouseExistente.setStock(nuevosDatosMouse.getStock());
+            mouseExistente.setInalambrico(nuevosDatosMouse.getInalambrico());
+            mouseExistente.setColor(nuevosDatosMouse.getColor());
+            mouseExistente.setBotonesCant(nuevosDatosMouse.getBotonesCant());
+            mouseExistente.setDpiMin(nuevosDatosMouse.getDpiMin());
+            mouseExistente.setDpiMax(nuevosDatosMouse.getDpiMax());
+            mouseExistente.setDescripcion(nuevosDatosMouse.getDescripcion());
+
+
+
 
             mouseRepository.save(mouseExistente);
 

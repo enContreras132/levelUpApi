@@ -80,6 +80,13 @@ public class AudifonoService {
             audifonoExistente.setCategoria(nuevosDatosAudifonos.getCategoria());
             audifonoExistente.setMarca(nuevosDatosAudifonos.getMarca());
             audifonoExistente.setPrecio(nuevosDatosAudifonos.getPrecio());
+            audifonoExistente.setStock(nuevosDatosAudifonos.getStock());
+            audifonoExistente.setInalambrico(nuevosDatosAudifonos.getInalambrico());
+            audifonoExistente.setColor(nuevosDatosAudifonos.getColor());
+            audifonoExistente.setBotonesCant(nuevosDatosAudifonos.getBotonesCant());
+            audifonoExistente.setDescripcion(nuevosDatosAudifonos.getDescripcion());
+            audifonoExistente.setUrlImagen(nuevosDatosAudifonos.getUrlImagen());
+
 
             audifonoRepository.save(audifonoExistente);
 

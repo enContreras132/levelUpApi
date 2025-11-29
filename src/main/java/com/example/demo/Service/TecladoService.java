@@ -90,6 +90,15 @@ public class TecladoService {
             tecladoExistente.setCategoria(nuevosDatosTeclado.getCategoria());
             tecladoExistente.setMarca(nuevosDatosTeclado.getMarca());
             tecladoExistente.setPrecio(nuevosDatosTeclado.getPrecio());
+            tecladoExistente.setStock(nuevosDatosTeclado.getStock());
+            tecladoExistente.setInalambrico(nuevosDatosTeclado.getInalambrico());
+            tecladoExistente.setColor(nuevosDatosTeclado.getColor());
+            tecladoExistente.setDimension(nuevosDatosTeclado.getDimension());
+            tecladoExistente.setTipo(nuevosDatosTeclado.getTipo());
+            tecladoExistente.setSwitches(nuevosDatosTeclado.getSwitches());
+            tecladoExistente.setDescripcion(nuevosDatosTeclado.getDescripcion());
+            tecladoExistente.setUrlImagen(nuevosDatosTeclado.getUrlImagen());
+
 
             TecladoRepository.save(tecladoExistente);
 
