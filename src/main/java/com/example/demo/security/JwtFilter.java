@@ -43,7 +43,7 @@ public class JwtFilter extends OncePerRequestFilter {
                 System.out.println("    ERROR AL LEER TOKEN: " + e.getMessage());
             }
         } else {
-            System.out.println("    NO HAY TOKEN O NO EMPIEZA POR 'Bearer '");
+            System.out.println("    NO HAY TOKEN O NO EMPIEZA POR 'Bearer '"); 
         }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
