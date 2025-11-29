@@ -33,7 +33,7 @@ public class MouseController {
     }
 
     @PutMapping("/{id}")
-    public String updateMouse(@PathVariable int id, @RequestBody MouseModel mouse){
+    public String updateMouse(@PathVariable int id, @RequestBody MouseModel mouse) {
         return mouseService.updateMouse(id, mouse);
     }
 }
