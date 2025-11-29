@@ -30,6 +30,8 @@ public class TecladoService {
             output += "tipo: "+tm.getTipo()+"\n";
             output += "switches: "+tm.getSwitches()+"\n";
             output += "descripcion: "+tm.getDescripcion()+"\n";
+            output += "url imagen: "+tm.getUrlImagen()+"\n";
+
         }
         if (output.isEmpty()){
             return "Agregar Teclado!";
@@ -56,6 +58,8 @@ public class TecladoService {
             output += "tipo: "+tm.getTipo()+"\n";
             output += "switches: "+tm.getSwitches()+"\n";
             output += "descripcion: "+tm.getDescripcion()+"\n";
+            output += "url imagen: "+tm.getUrlImagen()+"\n";
+
             return output;
         }
         else {

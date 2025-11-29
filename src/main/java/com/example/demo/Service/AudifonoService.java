@@ -24,7 +24,9 @@ public class AudifonoService {
             output += "stock: "+am.getStock()+"\n";
             output += "inalambrico: "+am.getInalambrico()+"\n";
             output += "color: "+am.getColor()+"\n";
-
+            output+="cantidad de botones:"+am.getBotonesCant()+"\n";
+            output+="descripcion:"+am.getDescripcion()+"\n";
+            output+="url imagen:"+am.getUrlImagen()+"\n";
         }
         if (output.isEmpty()){
             return "Agregar audifono!";
@@ -37,17 +39,19 @@ public class AudifonoService {
     public String getAudifonoById(int id) {
         String output = "";
         if (audifonoRepository.existsById(id)){
-            AudifonoModel ad = audifonoRepository.findById(id).get();
-            output += "id: "+ad.getId()+"\n";
-            output += "nombre: "+ad.getNombre()+"\n";
-            output += "categoria: "+ad.getCategoria();
-            output += "marca: "+ad.getMarca()+"\n";
-            output += "precio: "+ad.getPrecio()+"\n";
-            output += "stock: "+ad.getStock()+"\n";
-            output += "inalambrico: "+ad.getInalambrico()+"\n";
-            output += "color: "+ad.getColor()+"\n";
-            output += "botonesCant: "+ad.getBotonesCant()+"\n";
-            output += "descripcion: "+ad.getDescripcion()+"\n";
+            AudifonoModel am = audifonoRepository.findById(id).get();
+            output += "id: "+am.getId()+"\n";
+            output += "nombre: "+am.getNombre()+"\n";
+            output += "categoria: "+am.getCategoria();
+            output += "marca: "+am.getMarca()+"\n";
+            output += "precio: "+am.getPrecio()+"\n";
+            output += "stock: "+am.getStock()+"\n";
+            output += "inalambrico: "+am.getInalambrico()+"\n";
+            output += "color: "+am.getColor()+"\n";
+            output += "botonesCant: "+am.getBotonesCant()+"\n";
+            output += "descripcion: "+am.getDescripcion()+"\n";
+            output+="url imagen:"+am.getUrlImagen()+"\n";
+
             return output;
         }
         else {

@@ -29,6 +29,8 @@ public class NotebookService {
             output += "memoria: "+nm.getMemoria()+"\n";
             output += "tarjeta video: "+nm.getTarjetaVideo()+"\n";
             output += "descripcion: "+nm.getDescripcion()+"\n";
+            output += "url imagen: "+nm.getUrlImagen()+"\n";
+
         }
         if (output.isEmpty()){
             return "Agregar Notebook!";
@@ -55,6 +57,8 @@ public class NotebookService {
             output += "memoria: "+nm.getMemoria()+"\n";
             output += "tarjeta video: "+nm.getTarjetaVideo()+"\n";
             output += "descripcion: "+nm.getDescripcion()+"\n";
+            output += "url imagen: "+nm.getUrlImagen()+"\n";
+
             return output;
         }
         else {

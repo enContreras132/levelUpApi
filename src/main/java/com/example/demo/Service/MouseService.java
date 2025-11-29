@@ -16,19 +16,21 @@ public class MouseService {
 
     public String getAllMouse() {
         String output = "";
-        for (MouseModel ad : mouseRepository.findAll()){
-            output += "id: "+ad.getId()+"\n";
-            output += "nombre: "+ad.getNombre()+"\n";
-            output += "categoria: "+ad.getCategoria();
-            output += "marca: "+ad.getMarca()+"\n";
-            output += "precio: "+ad.getPrecio()+"\n";
-            output += "stock: "+ad.getStock()+"\n";
-            output += "inalambrico: "+ad.getInalambrico()+"\n";
-            output += "color: "+ad.getColor()+"\n";
-            output += "botonesCant: "+ad.getBotonesCant()+"\n";
-            output += "dpiMin: "+ad.getDpiMin()+"\n";
-            output += "dpiMax: "+ad.getDpiMax()+"\n";
-            output += "descripcion: "+ad.getDescripcion()+"\n";
+        for (MouseModel mm : mouseRepository.findAll()){
+            output += "id: "+mm.getId()+"\n";
+            output += "nombre: "+mm.getNombre()+"\n";
+            output += "categoria: "+mm.getCategoria();
+            output += "marca: "+mm.getMarca()+"\n";
+            output += "precio: "+mm.getPrecio()+"\n";
+            output += "stock: "+mm.getStock()+"\n";
+            output += "inalambrico: "+mm.getInalambrico()+"\n";
+            output += "color: "+mm.getColor()+"\n";
+            output += "botonesCant: "+mm.getBotonesCant()+"\n";
+            output += "dpiMin: "+mm.getDpiMin()+"\n";
+            output += "dpiMax: "+mm.getDpiMax()+"\n";
+            output += "descripcion: "+mm.getDescripcion()+"\n";
+            output += "url imagen: "+mm.getUrlImagen()+"\n";
+
 
         }
         if (output.isEmpty()){
@@ -42,19 +44,21 @@ public class MouseService {
     public String getMouseById(int id) {
         String output = "";
         if (mouseRepository.existsById(id)){
-            MouseModel ad = mouseRepository.findById(id).get();
-            output += "id: "+ad.getId()+"\n";
-            output += "nombre: "+ad.getNombre()+"\n";
-            output += "categoria: "+ad.getCategoria();
-            output += "marca: "+ad.getMarca()+"\n";
-            output += "precio: "+ad.getPrecio()+"\n";
-            output += "stock: "+ad.getStock()+"\n";
-            output += "inalambrico: "+ad.getInalambrico()+"\n";
-            output += "color: "+ad.getColor()+"\n";
-            output += "botonesCant: "+ad.getBotonesCant()+"\n";
-            output += "dpiMin: "+ad.getDpiMin()+"\n";
-            output += "dpiMax: "+ad.getDpiMax()+"\n";
-            output += "descripcion: "+ad.getDescripcion()+"\n";
+            MouseModel mm = mouseRepository.findById(id).get();
+            output += "id: "+mm.getId()+"\n";
+            output += "nombre: "+mm.getNombre()+"\n";
+            output += "categoria: "+mm.getCategoria();
+            output += "marca: "+mm.getMarca()+"\n";
+            output += "precio: "+mm.getPrecio()+"\n";
+            output += "stock: "+mm.getStock()+"\n";
+            output += "inalambrico: "+mm.getInalambrico()+"\n";
+            output += "color: "+mm.getColor()+"\n";
+            output += "botonesCant: "+mm.getBotonesCant()+"\n";
+            output += "dpiMin: "+mm.getDpiMin()+"\n";
+            output += "dpiMax: "+mm.getDpiMax()+"\n";
+            output += "descripcion: "+mm.getDescripcion()+"\n";
+            output += "url imagen: "+mm.getUrlImagen()+"\n";
+
             return output;
         }
         else {
@@ -64,15 +68,15 @@ public class MouseService {
 
     public String addMouse(MouseModel mouseModel){
         mouseRepository.save(mouseModel);
-        return "mouse agregegado";
+        return "Mouse agregegado";
     }
 
     public String deleteMouse(int id){
         if (mouseRepository.existsById(id)){
             mouseRepository.deleteById(id);
-            return "mouse eliminado";
+            return "Mouse eliminado";
         }else{
-            return "mouse no encontrado";
+            return "Mouse no encontrado";
         }
     }
 
