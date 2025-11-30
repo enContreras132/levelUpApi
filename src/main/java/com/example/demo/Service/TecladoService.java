@@ -4,6 +4,8 @@ import com.example.demo.Model.TecladoModel;
 import com.example.demo.Repository.TecladoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.Optional;
 
 
 @SuppressWarnings("null")
@@ -15,77 +17,33 @@ public class TecladoService {
     TecladoRepository TecladoRepository;
 
     //Listar
-    public String getAllTeclado() {
-        String output = "";
-        for (TecladoModel tm : TecladoRepository.findAll()){
-            output += "id: "+tm.getId()+"\n";
-            output += "nombre: "+tm.getNombre()+"\n";
-            output += "categoria: "+tm.getCategoria()+"\n";
-            output += "marca: "+tm.getMarca()+"\n";
-            output += "precio: "+tm.getPrecio()+"\n";
-            output += "stock: "+tm.getStock()+"\n";
-            output += "color: "+tm.getColor()+"\n";
-            output += "inalambrico: "+tm.getInalambrico()+"\n";
-            output += "dimension: "+tm.getDimension()+"\n";
-            output += "tipo: "+tm.getTipo()+"\n";
-            output += "switches: "+tm.getSwitches()+"\n";
-            output += "descripcion: "+tm.getDescripcion()+"\n";
-            output += "url imagen: "+tm.getUrlImagen()+"\n";
-
-        }
-        if (output.isEmpty()){
-            return "Agregar Teclado!";
-        }
-        else {
-            return output;
-        }
+    public List<TecladoModel> getAllTeclado() {
+        return TecladoRepository.findAll();
     }
 
     //Listar por ID
-    public String getTecladoById(int id) {
-        String output = "";
-        if(TecladoRepository.existsById(id)){
-            TecladoModel tm = TecladoRepository.findById(id).get();
-            output += "id: "+tm.getId()+"\n";
-            output += "nombre: "+tm.getNombre()+"\n";
-            output += "categoria: "+tm.getCategoria();
-            output += "marca: "+tm.getMarca()+"\n";
-            output += "precio: "+tm.getPrecio()+"\n";
-            output += "stock: "+tm.getStock()+"\n";
-            output += "color: "+tm.getColor()+"\n";
-            output += "inalambrico: "+tm.getInalambrico()+"\n";
-            output += "dimension: "+tm.getDimension()+"\n";
-            output += "tipo: "+tm.getTipo()+"\n";
-            output += "switches: "+tm.getSwitches()+"\n";
-            output += "descripcion: "+tm.getDescripcion()+"\n";
-            output += "url imagen: "+tm.getUrlImagen()+"\n";
-
-            return output;
-        }
-        else {
-            return "Teclado no encontrado";
-        }
+    public Optional<TecladoModel> getTecladoById(int id) {
+        return TecladoRepository.findById(id);
     }
 
     //Agregar
-    public String addTeclado(TecladoModel tecladoModel){
-        TecladoRepository.save(tecladoModel);
-        return "Teclado agregegado";
+    public TecladoModel addTeclado(TecladoModel tecladoModel){
+        return TecladoRepository.save(tecladoModel);
     }
 
     //Delete
-    public String deleteTeclado(int id){
+    public boolean deleteTeclado(int id){
         if (TecladoRepository.existsById(id)){
             TecladoRepository.deleteById(id);
-            return "Teclado eliminado";
+            return true;
         }else{
-            return "Teclado no encontrado";
+            return false;
         }
     }
 
 
     //Update
-    public String updateTeclado(int id, TecladoModel nuevosDatosTeclado){
+    public Optional<TecladoModel> updateTeclado(int id, TecladoModel nuevosDatosTeclado){
         if (TecladoRepository.existsById(id)){
 
             TecladoModel tecladoExistente = TecladoRepository.findById(id).get();
@@ -103,13 +61,10 @@ public class TecladoService {
             tecladoExistente.setDescripcion(nuevosDatosTeclado.getDescripcion());
             tecladoExistente.setUrlImagen(nuevosDatosTeclado.getUrlImagen());
 
-
-            TecladoRepository.save(tecladoExistente);
-
-            return "Notebook actualizado exitosamente";
+            return Optional.of(TecladoRepository.save(tecladoExistente));
         }
         else {
-            return "Notebook no encontrado con ID: " + id;
+            return Optional.empty();
         }
     }
 

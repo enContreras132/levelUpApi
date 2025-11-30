@@ -5,6 +5,8 @@ import com.example.demo.Model.NotebookModel;
 import com.example.demo.Repository.NotebookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.Optional;
 
 @SuppressWarnings("null")
 @Service
@@ -14,75 +16,31 @@ public class NotebookService {
     NotebookRepository NotebookRepository;
 
     //Listar
-    public String getAllNotebooks() {
-        String output = "";
-        for (NotebookModel nm : NotebookRepository.findAll()){
-            output += "id: "+nm.getId()+"\n";
-            output += "nombre: "+nm.getNombre()+"\n";
-            output += "categoria: "+nm.getCategoria()+"\n";
-            output += "marca: "+nm.getMarca()+"\n";
-            output += "precio: "+nm.getPrecio()+"\n";
-            output += "stock: "+nm.getStock()+"\n";
-            output += "color: "+nm.getColor()+"\n";
-            output += "procesador: "+nm.getProcesador()+"\n";
-            output += "ram: "+nm.getRam()+"\n";
-            output += "memoria: "+nm.getMemoria()+"\n";
-            output += "tarjeta video: "+nm.getTarjetaVideo()+"\n";
-            output += "descripcion: "+nm.getDescripcion()+"\n";
-            output += "url imagen: "+nm.getUrlImagen()+"\n";
-
-        }
-        if (output.isEmpty()){
-            return "Agregar Notebook!";
-        }
-        else {
-            return output;
-        }
+    public List<NotebookModel> getAllNotebooks() {
+        return NotebookRepository.findAll();
     }
 
     //Listar por ID
-    public String getAudifonoById(int id) {
-        String output = "";
-        if (NotebookRepository.existsById(id)){
-            NotebookModel nm = NotebookRepository.findById(id).get();
-            output += "id: "+nm.getId()+"\n";
-            output += "nombre: "+nm.getNombre()+"\n";
-            output += "categoria: "+nm.getCategoria();
-            output += "marca: "+nm.getMarca()+"\n";
-            output += "precio: "+nm.getPrecio()+"\n";
-            output += "stock: "+nm.getStock()+"\n";
-            output += "color: "+nm.getColor()+"\n";
-            output += "procesador: "+nm.getProcesador()+"\n";
-            output += "ram: "+nm.getRam()+"\n";
-            output += "memoria: "+nm.getMemoria()+"\n";
-            output += "tarjeta video: "+nm.getTarjetaVideo()+"\n";
-            output += "descripcion: "+nm.getDescripcion()+"\n";
-            output += "url imagen: "+nm.getUrlImagen()+"\n";
-
-            return output;
-        }
-        else {
-            return "Notebook no encontrado";
-        }
+    public Optional<NotebookModel> getNotebookById(int id) {
+        return NotebookRepository.findById(id);
     }
     //Agregar
-    public String addNotebook(NotebookModel notebookModel){
-        NotebookRepository.save(notebookModel);
-        return "Notebook agregegado";
+    public NotebookModel addNotebook(NotebookModel notebookModel){
+        return NotebookRepository.save(notebookModel);
     }
 
     //Delete
-    public String deleteNotebook(int id){
+    public boolean deleteNotebook(int id){
         if (NotebookRepository.existsById(id)){
             NotebookRepository.deleteById(id);
-            return "Notebook eliminado";
+            return true;
         }else{
-            return "Notebook no encontrado";
+            return false;
         }
     }
 
     //Update
-    public String updateNotebook(int id, NotebookModel nuevosDatosNotebook){
+    public Optional<NotebookModel> updateNotebook(int id, NotebookModel nuevosDatosNotebook){
         if (NotebookRepository.existsById(id)){
 
             NotebookModel notebookExistente = NotebookRepository.findById(id).get();
@@ -100,12 +58,10 @@ public class NotebookService {
             notebookExistente.setDescripcion(nuevosDatosNotebook.getDescripcion());
             notebookExistente.setUrlImagen(nuevosDatosNotebook.getUrlImagen());
 
-            NotebookRepository.save(notebookExistente);
-
-            return "Notebook actualizado exitosamente";
+            return Optional.of(NotebookRepository.save(notebookExistente));
         }
         else {
-            return "Notebook no encontrado con ID: " + id;
+            return Optional.empty();
         }
     }
 

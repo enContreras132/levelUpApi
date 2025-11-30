@@ -4,7 +4,10 @@ package com.example.demo.Controller;
 import com.example.demo.Model.ClienteModel;
 import com.example.demo.Service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/cliente")
@@ -15,28 +18,33 @@ public class ClienteController {
     ClienteService ClienteService;
 
     @GetMapping
-    public String getAllCliente(){
+    public List<ClienteModel> getAllCliente(){
         return ClienteService.getAllCliente();
     }
 
     @GetMapping("/{id}")
-    public String getClientebyId(@PathVariable int id){
-        return ClienteService.getClienteById(id);
+    public ResponseEntity<ClienteModel> getClientebyId(@PathVariable int id){
+        Optional<ClienteModel> cliente = ClienteService.getClienteById(id);
+        return cliente.map(ResponseEntity::ok)
+                      .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public  String addCliente(@RequestBody ClienteModel clienteModel){
+    public ClienteModel addCliente(@RequestBody ClienteModel clienteModel){
         return ClienteService.addCliente(clienteModel);
     }
 
     @DeleteMapping("/{id}")
-    public String deleteCliente(@PathVariable int id){
-        return ClienteService.deleteCliente(id); // Llama al servicio con el ID
+    public ResponseEntity<Void> deleteCliente(@PathVariable int id){
+        boolean deleted = ClienteService.deleteCliente(id);
+        return deleted ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }
 
     @PutMapping("/{id}")
-    public String updateCliente(@PathVariable int id, @RequestBody ClienteModel cliente){
-        return ClienteService.updateCliente(id, cliente);
+    public ResponseEntity<ClienteModel> updateCliente(@PathVariable int id, @RequestBody ClienteModel cliente){
+        Optional<ClienteModel> updated = ClienteService.updateCliente(id, cliente);
+        return updated.map(ResponseEntity::ok)
+                      .orElse(ResponseEntity.notFound().build());
     }
 
 }
