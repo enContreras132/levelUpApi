@@ -10,6 +10,8 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/notebook")
+@CrossOrigin(origins = "http://localhost:5173")
+
 public class NotebookController {
     @Autowired
     NotebookService NotebookService;

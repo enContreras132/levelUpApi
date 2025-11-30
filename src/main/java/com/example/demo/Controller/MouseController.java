@@ -10,6 +10,8 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/mouse")
+@CrossOrigin(origins = "http://localhost:5173")
+
 public class MouseController {
 
     @Autowired

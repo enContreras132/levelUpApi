@@ -52,6 +52,7 @@ public class MouseService {
             mouseExistente.setDpiMin(nuevosDatosMouse.getDpiMin());
             mouseExistente.setDpiMax(nuevosDatosMouse.getDpiMax());
             mouseExistente.setDescripcion(nuevosDatosMouse.getDescripcion());
+            mouseExistente.setUrlImagen(nuevosDatosMouse.getUrlImagen());
 
             return Optional.of(mouseRepository.save(mouseExistente));
         }
