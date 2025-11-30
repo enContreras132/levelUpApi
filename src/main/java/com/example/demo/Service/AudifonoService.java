@@ -4,6 +4,8 @@ import com.example.demo.Model.AudifonoModel;
 import com.example.demo.Repository.AudifonoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @SuppressWarnings("null")
@@ -12,70 +14,31 @@ public class AudifonoService {
     @Autowired
     AudifonoRepository audifonoRepository;
 
-    //Listar
-    public String getAllAudifono() {
-        String output = "";
-        for (AudifonoModel am : audifonoRepository.findAll()){
-            output += "id: "+am.getId()+"\n";
-            output += "nombre: "+am.getNombre()+"\n";
-            output += "categoria: "+am.getCategoria();
-            output += "marca: "+am.getMarca()+"\n";
-            output += "precio: "+am.getPrecio()+"\n";
-            output += "stock: "+am.getStock()+"\n";
-            output += "inalambrico: "+am.getInalambrico()+"\n";
-            output += "color: "+am.getColor()+"\n";
-            output+="cantidad de botones:"+am.getBotonesCant()+"\n";
-            output+="descripcion:"+am.getDescripcion()+"\n";
-            output+="url imagen:"+am.getUrlImagen()+"\n";
-        }
-        if (output.isEmpty()){
-            return "Agregar audifono!";
-        }
-        else {
-            return output;
-        }
+    public List<AudifonoModel> getAllAudifono() {
+        return audifonoRepository.findAll();
     }
+    
     //Listar por ID
-    public String getAudifonoById(int id) {
-        String output = "";
-        if (audifonoRepository.existsById(id)){
-            AudifonoModel am = audifonoRepository.findById(id).get();
-            output += "id: "+am.getId()+"\n";
-            output += "nombre: "+am.getNombre()+"\n";
-            output += "categoria: "+am.getCategoria();
-            output += "marca: "+am.getMarca()+"\n";
-            output += "precio: "+am.getPrecio()+"\n";
-            output += "stock: "+am.getStock()+"\n";
-            output += "inalambrico: "+am.getInalambrico()+"\n";
-            output += "color: "+am.getColor()+"\n";
-            output += "botonesCant: "+am.getBotonesCant()+"\n";
-            output += "descripcion: "+am.getDescripcion()+"\n";
-            output+="url imagen:"+am.getUrlImagen()+"\n";
-
-            return output;
-        }
-        else {
-            return "Audifono no encontrado";
-        }
+    public Optional<AudifonoModel> getAudifonoById(int id) {
+        return audifonoRepository.findById(id);
     }
     //Agregar
-    public String addAudifono(AudifonoModel audifonoModel){
-        audifonoRepository.save(audifonoModel);
-        return "Audifono agregegado";
+    public AudifonoModel addAudifono(AudifonoModel audifonoModel){
+        return audifonoRepository.save(audifonoModel);
     }
 
     //Delete
-    public String deleteAudifono(int id){
+    public boolean deleteAudifono(int id){
         if (audifonoRepository.existsById(id)){
             audifonoRepository.deleteById(id);
-            return "Audifono eliminado";
+            return true;
         }else{
-            return "Audifono no encontrado";
+            return false;
         }
     }
 
     //Update
-    public String updateAudifono(int id, AudifonoModel nuevosDatosAudifonos){
+    public Optional<AudifonoModel> updateAudifono(int id, AudifonoModel nuevosDatosAudifonos){
         if (audifonoRepository.existsById(id)){
 
             AudifonoModel audifonoExistente = audifonoRepository.findById(id).get();
@@ -91,13 +54,10 @@ public class AudifonoService {
             audifonoExistente.setDescripcion(nuevosDatosAudifonos.getDescripcion());
             audifonoExistente.setUrlImagen(nuevosDatosAudifonos.getUrlImagen());
 
-
-            audifonoRepository.save(audifonoExistente);
-
-            return "Audifono actualizado exitosamente";
+            return Optional.of(audifonoRepository.save(audifonoExistente));
         }
         else {
-            return "Audifono no encontrado con ID: " + id;
+            return Optional.empty();
         }
     }
 

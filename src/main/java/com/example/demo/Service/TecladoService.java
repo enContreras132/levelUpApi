@@ -20,7 +20,7 @@ public class TecladoService {
         for (TecladoModel tm : TecladoRepository.findAll()){
             output += "id: "+tm.getId()+"\n";
             output += "nombre: "+tm.getNombre()+"\n";
-            output += "categoria: "+tm.getCategoria();
+            output += "categoria: "+tm.getCategoria()+"\n";
             output += "marca: "+tm.getMarca()+"\n";
             output += "precio: "+tm.getPrecio()+"\n";
             output += "stock: "+tm.getStock()+"\n";

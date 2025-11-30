@@ -3,37 +3,46 @@ package com.example.demo.Controller;
 import com.example.demo.Model.AudifonoModel;
 import com.example.demo.Service.AudifonoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/audifono")
+@CrossOrigin(origins = "http://localhost:5173")
 public class AudifonoController {
 
     @Autowired
     AudifonoService AudifonoService;
 
     @GetMapping
-    public String getAllAudifono(){
+    public List<AudifonoModel> getAllAudifono(){
         return AudifonoService.getAllAudifono();
     }
 
     @GetMapping("/{id}")
-    public String getAudifonoById(@PathVariable int id){
-        return AudifonoService.getAudifonoById(id);
+    public ResponseEntity<AudifonoModel> getAudifonoById(@PathVariable int id){
+        Optional<AudifonoModel> audifono = AudifonoService.getAudifonoById(id);
+        return audifono.map(ResponseEntity::ok)
+                       .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public  String addAudifono(@RequestBody AudifonoModel audifonoModel){
+    public AudifonoModel addAudifono(@RequestBody AudifonoModel audifonoModel){
         return AudifonoService.addAudifono(audifonoModel);
     }
 
     @DeleteMapping("/{id}")
-    public String deleteAudifono(@PathVariable int id){
-        return AudifonoService.deleteAudifono(id); // Llama al servicio con el ID
+    public ResponseEntity<Void> deleteAudifono(@PathVariable int id){
+        boolean deleted = AudifonoService.deleteAudifono(id);
+        return deleted ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }
 
     @PutMapping("/{id}")
-    public String updateAudifono(@PathVariable int id, @RequestBody AudifonoModel audifono){
-        return AudifonoService.updateAudifono(id, audifono);
+    public ResponseEntity<AudifonoModel> updateAudifono(@PathVariable int id, @RequestBody AudifonoModel audifono){
+        Optional<AudifonoModel> updated = AudifonoService.updateAudifono(id, audifono);
+        return updated.map(ResponseEntity::ok)
+                      .orElse(ResponseEntity.notFound().build());
     }
 }

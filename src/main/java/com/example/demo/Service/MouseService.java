@@ -47,7 +47,7 @@ public class MouseService {
             MouseModel mm = mouseRepository.findById(id).get();
             output += "id: "+mm.getId()+"\n";
             output += "nombre: "+mm.getNombre()+"\n";
-            output += "categoria: "+mm.getCategoria();
+            output += "categoria: "+mm.getCategoria()+"\n";
             output += "marca: "+mm.getMarca()+"\n";
             output += "precio: "+mm.getPrecio()+"\n";
             output += "stock: "+mm.getStock()+"\n";
