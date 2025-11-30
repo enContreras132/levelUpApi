@@ -19,7 +19,7 @@ public class NotebookService {
         for (NotebookModel nm : NotebookRepository.findAll()){
             output += "id: "+nm.getId()+"\n";
             output += "nombre: "+nm.getNombre()+"\n";
-            output += "categoria: "+nm.getCategoria();
+            output += "categoria: "+nm.getCategoria()+"\n";
             output += "marca: "+nm.getMarca()+"\n";
             output += "precio: "+nm.getPrecio()+"\n";
             output += "stock: "+nm.getStock()+"\n";
