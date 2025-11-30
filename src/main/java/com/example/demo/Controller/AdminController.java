@@ -4,7 +4,10 @@ package com.example.demo.Controller;
 import com.example.demo.Model.AdminModel;
 import com.example.demo.Service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -15,26 +18,31 @@ public class AdminController {
     AdminService adminService;
 
     @GetMapping
-    public String getAllAdmin(){
+    public List<AdminModel> getAllAdmin(){
         return adminService.getAllAdmin();
     }
     @GetMapping("/{id}")
-    public String getAdminById(@PathVariable int id){
-        return adminService.getAdminById(id);
+    public ResponseEntity<AdminModel> getAdminById(@PathVariable int id){
+        Optional<AdminModel> admin = adminService.getAdminById(id);
+        return admin.map(ResponseEntity::ok)
+                    .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public  String addAdmin(@RequestBody AdminModel adminModel){
+    public AdminModel addAdmin(@RequestBody AdminModel adminModel){
         return adminService.addAdmin(adminModel);
     }
 
     @DeleteMapping("/{id}")
-    public String deleteAdmin(@PathVariable int id){
-        return adminService.deleteAdmin(id); // Llama al servicio con el ID
+    public ResponseEntity<Void> deleteAdmin(@PathVariable int id){
+        boolean deleted = adminService.deleteAdmin(id);
+        return deleted ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }
 
     @PutMapping("/{id}")
-    public String updateAdmin(@PathVariable int id, @RequestBody AdminModel admin){
-        return adminService.updateAdmin(id, admin);
+    public ResponseEntity<AdminModel> updateAdmin(@PathVariable int id, @RequestBody AdminModel admin){
+        Optional<AdminModel> updated = adminService.updateAdmin(id, admin);
+        return updated.map(ResponseEntity::ok)
+                      .orElse(ResponseEntity.notFound().build());
     }
 }

@@ -3,7 +3,10 @@ package com.example.demo.Controller;
 import com.example.demo.Model.NotebookModel;
 import com.example.demo.Service.NotebookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/notebook")
@@ -12,27 +15,32 @@ public class NotebookController {
     NotebookService NotebookService;
 
     @GetMapping
-    public String getAllNotebooks(){
+    public List<NotebookModel> getAllNotebooks(){
         return NotebookService.getAllNotebooks();
     }
 
     @GetMapping("/{id}")
-    public String getNotebook(@PathVariable int id){
-        return NotebookService.getAudifonoById(id);
+    public ResponseEntity<NotebookModel> getNotebook(@PathVariable int id){
+        Optional<NotebookModel> notebook = NotebookService.getNotebookById(id);
+        return notebook.map(ResponseEntity::ok)
+                       .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public  String addNotebook(@RequestBody NotebookModel notebookModel){
+    public NotebookModel addNotebook(@RequestBody NotebookModel notebookModel){
         return NotebookService.addNotebook(notebookModel);
     }
 
     @DeleteMapping("/{id}")
-    public String deleteNotebook(@PathVariable int id){
-        return NotebookService.deleteNotebook(id); // Llama al servicio con el ID
+    public ResponseEntity<Void> deleteNotebook(@PathVariable int id){
+        boolean deleted = NotebookService.deleteNotebook(id);
+        return deleted ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }
 
     @PutMapping("/{id}")
-    public String updateNotebook(@PathVariable int id, @RequestBody NotebookModel notebook){
-        return NotebookService.updateNotebook(id, notebook);
+    public ResponseEntity<NotebookModel> updateNotebook(@PathVariable int id, @RequestBody NotebookModel notebook){
+        Optional<NotebookModel> updated = NotebookService.updateNotebook(id, notebook);
+        return updated.map(ResponseEntity::ok)
+                      .orElse(ResponseEntity.notFound().build());
     }
 }

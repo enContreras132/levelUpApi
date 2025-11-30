@@ -5,6 +5,8 @@ import com.example.demo.Model.AdminModel;
 import com.example.demo.Repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @SuppressWarnings("null")
@@ -15,61 +17,32 @@ public class AdminService {
     AdminRepository adminRepository;
 
     //Listar
-
-    public String getAllAdmin() {
-        String output = "";
-        for (AdminModel am : adminRepository.findAll()){
-            output += "id: "+am.getId()+"\n";
-            output += "nombre: "+am.getNombre()+"\n";
-            output += "rol: "+am.getRol()+"\n";
-            output += "correo: "+am.getCorreo()+"\n";
-            output += "contraseña: "+am.getContraseña()+"\n";
-
-        }
-        if (output.isEmpty()){
-            return "Agregar Administrador!";
-        }
-        else {
-            return output;
-        }
+    public List<AdminModel> getAllAdmin() {
+        return adminRepository.findAll();
     }
 
     //Listar por id
-    public String getAdminById(int id) {
-        String output = "";
-        if (adminRepository.existsById(id)){
-            AdminModel am  = adminRepository.findById(id).get();
-            output += "id: "+am.getId()+"\n";
-            output += "nombre: "+am.getNombre()+"\n";
-            output += "rol: "+am.getRol()+"\n";
-            output += "correo: "+am.getCorreo()+"\n";
-            output += "contraseña: "+am.getContraseña()+"\n";
-
-            return output;
-        }
-        else {
-            return "Administrador no encontrado";
-        }
+    public Optional<AdminModel> getAdminById(int id) {
+        return adminRepository.findById(id);
     }
 
     //Agregar
-    public String addAdmin(AdminModel adminModel){
-        adminRepository.save(adminModel);
-        return "admin agregegado";
+    public AdminModel addAdmin(AdminModel adminModel){
+        return adminRepository.save(adminModel);
     }
 
     //Eliminar
-    public String deleteAdmin(int id){
+    public boolean deleteAdmin(int id){
         if (adminRepository.existsById(id)){
             adminRepository.deleteById(id);
-            return "Admin eliminado";
+            return true;
         }else{
-            return "Admin no encontrado";
+            return false;
         }
     }
 
     //Actualizar/Update
-    public String updateAdmin(int id, AdminModel nuevosDatosAdmin){
+    public Optional<AdminModel> updateAdmin(int id, AdminModel nuevosDatosAdmin){
         if (adminRepository.existsById(id)){
 
             AdminModel adminExistente = adminRepository.findById(id).get();
@@ -80,13 +53,10 @@ public class AdminService {
             adminExistente.setCorreo(nuevosDatosAdmin.getCorreo());
             adminExistente.setContraseña(nuevosDatosAdmin.getContraseña());
 
-
-            adminRepository.save(adminExistente);
-
-            return "Administrador actualizado exitosamente";
+            return Optional.of(adminRepository.save(adminExistente));
         }
         else {
-            return "Administrador no encontrado con ID: " + id;
+            return Optional.empty();
         }
     }
 
