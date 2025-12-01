@@ -45,6 +45,11 @@ public class LevelupApiApplication {
                 
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .requestMatchers("/login").permitAll()
+                
+                // PERMITIR TODOS LOS ENDPOINTS DE LA API (TEMPORAL PARA DESARROLLO) eliminar mas adelante
+                .requestMatchers("/audifono/**", "/mouse/**", "/teclado/**", "/notebook/**", 
+                                "/admin/**", "/cliente/**", "/region/**").permitAll()
+                
                 .anyRequest().authenticated()
             )
             .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
