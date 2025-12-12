@@ -47,8 +47,9 @@ public class LevelupApiApplication {
                 .requestMatchers("/login", "/usuario/login").permitAll()
                 
                 // PERMITIR TODOS LOS ENDPOINTS DE LA API (TEMPORAL PARA DESARROLLO) eliminar mas adelante
-                .requestMatchers("/audifono/**", "/mouse/**", "/teclado/**", "/notebook/**", 
-                                "/admin/**", "/cliente/**", "/region/**").permitAll()
+                .requestMatchers("/audifono/**", "/mouse/**", "/teclado/**", "/notebook/**", "/cliente/**", "/region/**").permitAll()
+                // Proteger rutas administrativas: solo ADMIN
+                .requestMatchers("/admin/**").hasRole("ADMIN")
                 
                 .anyRequest().authenticated()
             )
