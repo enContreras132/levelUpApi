@@ -46,7 +46,7 @@ public class AuthController {
         
         if (admin.isPresent()) {
             AdminModel adminData = admin.get();
-            String token = jwtService.generateToken(adminData.getCorreo());
+            String token = jwtService.generateToken(adminData.getCorreo(), adminData.getRol());
             return ResponseEntity.ok(Map.of(
                 "token", token,
                 "rol", adminData.getRol(),
@@ -64,7 +64,7 @@ public class AuthController {
         
         if (cliente.isPresent()) {
             ClienteModel clienteData = cliente.get();
-            String token = jwtService.generateToken(clienteData.getCorreo());
+            String token = jwtService.generateToken(clienteData.getCorreo(), clienteData.getRol());
             return ResponseEntity.ok(Map.of(
                 "token", token,
                 "rol", clienteData.getRol(),
