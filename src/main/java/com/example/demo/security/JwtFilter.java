@@ -9,7 +9,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -51,17 +50,7 @@ public class JwtFilter extends OncePerRequestFilter {
             System.out.println("    Validando token...");
             if (jwtService.validateToken(token, username)) {
                 System.out.println("    TOKEN VÁLIDO. AUTORIZANDO USUARIO.");
-                // Extraer rol(es) del token y convertir a authorities
-                String role = jwtService.extractRole(token);
-                var authorities = new ArrayList<SimpleGrantedAuthority>();
-                if (role != null && !role.isEmpty()) {
-                    // Normalizar a mayúsculas y prefijo ROLE_
-                    String normalized = role.startsWith("ROLE_") ? role : "ROLE_" + role;
-                    normalized = normalized.toUpperCase(java.util.Locale.ROOT);
-                    authorities.add(new SimpleGrantedAuthority(normalized));
-                }
-
-                UserDetails userDetails = new User(username, "", authorities);
+                UserDetails userDetails = new User(username, "", new ArrayList<>());
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities());
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
