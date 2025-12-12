@@ -22,6 +22,13 @@ public class JwtService {
         return createToken(claims, userName);
     }
 
+    // Overload: generar token incluyendo rol
+    public String generateToken(String userName, String role) {
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("rol", role);
+        return createToken(claims, userName);
+    }
+
     private String createToken(Map<String, Object> claims, String userName) {
         return Jwts.builder()
                 .setClaims(claims)
@@ -41,6 +48,12 @@ public class JwtService {
     public String extractUsername(String token) {
         return Jwts.parserBuilder().setSigningKey(getSignKey()).build()
                 .parseClaimsJws(token).getBody().getSubject();
+    }
+
+    public String extractRole(String token) {
+        Object rol = Jwts.parserBuilder().setSigningKey(getSignKey()).build()
+                .parseClaimsJws(token).getBody().get("rol");
+        return rol != null ? rol.toString() : null;
     }
 
     public boolean validateToken(String token, String username) {
