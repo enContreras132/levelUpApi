@@ -34,7 +34,7 @@ public class MouseModel {
     private int dpiMin;
     @Column(nullable = false)
     private int dpiMax;
-    @Column(nullable = false)
+    @Column(nullable = false, length = 2000)
     private String descripcion;
     @Column(nullable = false)
     private String urlImagen;

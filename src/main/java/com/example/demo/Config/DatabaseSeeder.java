@@ -21,24 +21,25 @@ public class DatabaseSeeder implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // Solo ejecutar el seeder si la tabla principal (Admin) está vacía
-        if (adminRepository.count() == 0) {
-            System.out.println("Iniciando seeder de base de datos");
-            
-            // Llama a los métodos de siembra
-            seedAdmins();
-            seedClientes();
-            seedRegiones();
-            seedComunas();
-            seedAudifonos();
-            seedMouses();
-            seedTeclados();
-            seedNotebooks();
-            
-            System.out.println("Seeder completado exitosamente!");
-        } else {
-            System.out.println("La base de datos ya contiene datos. Seeder omitido.");
+        // Verificar si la base de datos ya está poblada
+        if (adminRepository.count() > 0) {
+            System.out.println("📊 Base de datos poblada, seeder omitido");
+            return;
         }
+        
+        System.out.println("🌱 Iniciando seeder de base de datos...");
+        
+        // Llama a los métodos de siembra
+        seedAdmins();
+        seedRegiones();
+        seedComunas();
+        seedClientes();
+        seedAudifonos();
+        seedMouses();
+        seedTeclados();
+        seedNotebooks();
+        
+        System.out.println("✅ Seeder completado exitosamente!");
     }
 
     private void seedAdmins() {
@@ -56,26 +57,40 @@ public class DatabaseSeeder implements CommandLineRunner {
 
     private void seedClientes() {
         // Datos de la tabla 'cliente' (3 filas)
+        // Obtener comunas para asignar a los clientes
+        java.util.List<ComunaModel> comunas = comunaRepository.findAll();
         
         ClienteModel cliente1 = new ClienteModel();
         cliente1.setNombre("Enzo");
-        cliente1.setRol("cliente");
+        cliente1.setRut("12345678-9");
+        cliente1.setTelefono("+56912345678");
         cliente1.setCorreo("enzo123@gmail.com");
+        cliente1.setFechaNacimiento(java.time.LocalDate.of(1995, 5, 15));
         cliente1.setContraseña("enzo123");
+        cliente1.setRol("cliente");
+        cliente1.setComuna(comunas.get(30)); // Santiago (Región Metropolitana)
         clienteRepository.save(cliente1);
 
         ClienteModel cliente2 = new ClienteModel();
         cliente2.setNombre("Fabian");
-        cliente2.setRol("cliente");
+        cliente2.setRut("23456789-0");
+        cliente2.setTelefono("+56923456789");
         cliente2.setCorreo("fabian123@gmail.com");
+        cliente2.setFechaNacimiento(java.time.LocalDate.of(1998, 8, 22));
         cliente2.setContraseña("fabian123");
+        cliente2.setRol("cliente");
+        cliente2.setComuna(comunas.get(6)); // Viña del Mar (Valparaíso)
         clienteRepository.save(cliente2);
 
         ClienteModel cliente3 = new ClienteModel();
         cliente3.setNombre("Maximiliano");
-        cliente3.setRol("cliente");
+        cliente3.setRut("34567890-1");
+        cliente3.setTelefono("+56934567890");
         cliente3.setCorreo("maximiliano123@gmail.com");
+        cliente3.setFechaNacimiento(java.time.LocalDate.of(2000, 3, 10));
         cliente3.setContraseña("maxi123");
+        cliente3.setRol("cliente");
+        cliente3.setComuna(comunas.get(10)); // Concepción (Biobío)
         clienteRepository.save(cliente3);
 
         System.out.println("Clientes creados: " + clienteRepository.count());
@@ -246,7 +261,6 @@ public class DatabaseSeeder implements CommandLineRunner {
         // Datos de la tabla 'audifono' (2 filas)
         
         AudifonoModel audifono1 = new AudifonoModel();
-        audifono1.setId(1001); // Mantener el ID fijo como en el script SQL
         audifono1.setNombre("Audífonos Gamer Rgb Altec Lansing Gh9602");
         audifono1.setCategoria("Audífonos");
         audifono1.setMarca("Altec Lansing");
@@ -275,7 +289,6 @@ public class DatabaseSeeder implements CommandLineRunner {
         audifonoRepository.save(audifono1);
 
         AudifonoModel audifono2 = new AudifonoModel();
-        audifono2.setId(1002);
         audifono2.setNombre("Audifonos Gamer Monster");
         audifono2.setCategoria("Audífonos");
         audifono2.setMarca("Monster");
@@ -309,7 +322,6 @@ public class DatabaseSeeder implements CommandLineRunner {
         // Datos de la tabla 'mouse' (2 filas)
 
         MouseModel mouse1 = new MouseModel();
-        mouse1.setId(3001); // Mantener el ID fijo como en el script SQL
         mouse1.setNombre("Mouse Gamer Monster RGB");
         mouse1.setCategoria("Mouse");
         mouse1.setMarca("Monster");
@@ -335,7 +347,6 @@ public class DatabaseSeeder implements CommandLineRunner {
         mouseRepository.save(mouse1);
 
         MouseModel mouse2 = new MouseModel();
-        mouse2.setId(3002); // Mantener el ID fijo como en el script SQL
         mouse2.setNombre("Mouse Razer Cobra Pro HyperSpeed");
         mouse2.setCategoria("Mouse");
         mouse2.setMarca("Razer");
@@ -368,7 +379,6 @@ public class DatabaseSeeder implements CommandLineRunner {
         // Datos de la tabla 'teclado' (2 filas)
 
         TecladoModel teclado1 = new TecladoModel();
-        teclado1.setId(2001); // Mantener el ID fijo como en el script SQL
         teclado1.setNombre("Teclado Gamer Redragon Kumara");
         teclado1.setCategoria("Teclado");
         teclado1.setMarca("Redragon");
@@ -388,7 +398,6 @@ public class DatabaseSeeder implements CommandLineRunner {
         tecladoRepository.save(teclado1);
 
         TecladoModel teclado2 = new TecladoModel();
-        teclado2.setId(2002);
         teclado2.setNombre("Teclado Mecanico Gamer RK Royal Kludge R65");
         teclado2.setCategoria("Teclado");
         teclado2.setMarca("Royal Kludge");
@@ -424,7 +433,6 @@ public class DatabaseSeeder implements CommandLineRunner {
         // Datos de la tabla 'notebook' (1 fila)
 
         NotebookModel notebook1 = new NotebookModel();
-        notebook1.setId(4001); // Mantener el ID fijo como en el script SQL
         notebook1.setNombre("Gamer Nitro V15 RTX 2050");
         notebook1.setCategoria("Notebook");
         notebook1.setMarca("Acer");

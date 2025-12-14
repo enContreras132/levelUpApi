@@ -30,7 +30,7 @@ public class AudifonoModel {
     private String color;
     @Column(nullable = false)
     private int botonesCant;
-    @Column(nullable = false)
+    @Column(nullable = false, length = 2000)
     private String descripcion;
     @Column(nullable = false)
     private String urlImagen;

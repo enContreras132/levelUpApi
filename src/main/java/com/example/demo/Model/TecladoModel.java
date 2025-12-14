@@ -34,7 +34,7 @@ public class TecladoModel {
     private String tipo;
     @Column(nullable = false)
     private String switches;
-    @Column(nullable = false)
+    @Column(nullable = false , length = 2000)
     private String descripcion;
     @Column(nullable = false)
     private String urlImagen;

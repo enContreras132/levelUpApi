@@ -34,7 +34,7 @@ public class NotebookModel {
     private String memoria;
     @Column(nullable = false)
     private String tarjetaVideo;
-    @Column(nullable = false)
+    @Column(nullable = false , length = 2000)
     private String descripcion;
     @Column(nullable = false)
     private String urlImagen;

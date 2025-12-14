@@ -48,9 +48,13 @@ public class ClienteService {
             ClienteModel clienteExistente = clienteRepository.findById(id).get();
 
             clienteExistente.setNombre(nuevosDatosCliente.getNombre());
-            clienteExistente.setRol(nuevosDatosCliente.getRol());
+            clienteExistente.setRut(nuevosDatosCliente.getRut());
+            clienteExistente.setTelefono(nuevosDatosCliente.getTelefono());
             clienteExistente.setCorreo(nuevosDatosCliente.getCorreo());
+            clienteExistente.setFechaNacimiento(nuevosDatosCliente.getFechaNacimiento());
             clienteExistente.setContraseña(nuevosDatosCliente.getContraseña());
+            clienteExistente.setRol(nuevosDatosCliente.getRol());
+            clienteExistente.setComuna(nuevosDatosCliente.getComuna());
 
             return Optional.of(clienteRepository.save(clienteExistente));
         }
