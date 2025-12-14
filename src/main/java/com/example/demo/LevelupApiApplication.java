@@ -64,6 +64,8 @@ public class LevelupApiApplication {
         // Permitir localhost (desarrollo) y producción (Netlify + Railway)
         configuration.setAllowedOriginPatterns(Arrays.asList(
             "http://localhost:5173",
+            "http://localhost:5174",
+            "http://localhost:5173",
             "http://localhost:3000", 
             "https://reactlevelup2.netlify.app",
             "https://levelupapi-production.up.railway.app"
