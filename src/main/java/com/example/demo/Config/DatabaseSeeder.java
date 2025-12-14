@@ -246,6 +246,7 @@ public class DatabaseSeeder implements CommandLineRunner {
         // Datos de la tabla 'audifono' (2 filas)
         
         AudifonoModel audifono1 = new AudifonoModel();
+        audifono1.setId(1001); // Mantener el ID fijo como en el script SQL
         audifono1.setNombre("Audífonos Gamer Rgb Altec Lansing Gh9602");
         audifono1.setCategoria("Audífonos");
         audifono1.setMarca("Altec Lansing");
@@ -274,6 +275,7 @@ public class DatabaseSeeder implements CommandLineRunner {
         audifonoRepository.save(audifono1);
 
         AudifonoModel audifono2 = new AudifonoModel();
+        audifono2.setId(1002);
         audifono2.setNombre("Audifonos Gamer Monster");
         audifono2.setCategoria("Audífonos");
         audifono2.setMarca("Monster");
@@ -307,6 +309,7 @@ public class DatabaseSeeder implements CommandLineRunner {
         // Datos de la tabla 'mouse' (2 filas)
 
         MouseModel mouse1 = new MouseModel();
+        mouse1.setId(3001); // Mantener el ID fijo como en el script SQL
         mouse1.setNombre("Mouse Gamer Monster RGB");
         mouse1.setCategoria("Mouse");
         mouse1.setMarca("Monster");
@@ -332,6 +335,7 @@ public class DatabaseSeeder implements CommandLineRunner {
         mouseRepository.save(mouse1);
 
         MouseModel mouse2 = new MouseModel();
+        mouse2.setId(3002); // Mantener el ID fijo como en el script SQL
         mouse2.setNombre("Mouse Razer Cobra Pro HyperSpeed");
         mouse2.setCategoria("Mouse");
         mouse2.setMarca("Razer");
@@ -364,6 +368,7 @@ public class DatabaseSeeder implements CommandLineRunner {
         // Datos de la tabla 'teclado' (2 filas)
 
         TecladoModel teclado1 = new TecladoModel();
+        teclado1.setId(2001); // Mantener el ID fijo como en el script SQL
         teclado1.setNombre("Teclado Gamer Redragon Kumara");
         teclado1.setCategoria("Teclado");
         teclado1.setMarca("Redragon");
@@ -383,6 +388,7 @@ public class DatabaseSeeder implements CommandLineRunner {
         tecladoRepository.save(teclado1);
 
         TecladoModel teclado2 = new TecladoModel();
+        teclado2.setId(2002);
         teclado2.setNombre("Teclado Mecanico Gamer RK Royal Kludge R65");
         teclado2.setCategoria("Teclado");
         teclado2.setMarca("Royal Kludge");
@@ -418,6 +424,7 @@ public class DatabaseSeeder implements CommandLineRunner {
         // Datos de la tabla 'notebook' (1 fila)
 
         NotebookModel notebook1 = new NotebookModel();
+        notebook1.setId(4001); // Mantener el ID fijo como en el script SQL
         notebook1.setNombre("Gamer Nitro V15 RTX 2050");
         notebook1.setCategoria("Notebook");
         notebook1.setMarca("Acer");
