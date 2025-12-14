@@ -5,6 +5,9 @@ import com.example.demo.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class DatabaseSeeder implements CommandLineRunner {
@@ -18,8 +21,12 @@ public class DatabaseSeeder implements CommandLineRunner {
     @Autowired private MouseRepository mouseRepository;
     @Autowired private TecladoRepository tecladoRepository;
     @Autowired private NotebookRepository notebookRepository;
+    
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Override
+    @Transactional
     public void run(String... args) throws Exception {
         // Verificar si la base de datos ya está poblada
         if (adminRepository.count() > 0) {
@@ -28,6 +35,9 @@ public class DatabaseSeeder implements CommandLineRunner {
         }
         
         System.out.println("🌱 Iniciando seeder de base de datos...");
+        
+        // Configurar AUTO_INCREMENT inicial para las tablas de productos
+        setAutoIncrementValues();
         
         // Llama a los métodos de siembra
         seedAdmins();
@@ -462,5 +472,17 @@ public class DatabaseSeeder implements CommandLineRunner {
         notebookRepository.save(notebook1);
 
         System.out.println("Notebooks creados: " + notebookRepository.count());
+    }
+    
+    private void setAutoIncrementValues() {
+        try {
+            entityManager.createNativeQuery("ALTER TABLE audifono AUTO_INCREMENT = 1000").executeUpdate();
+            entityManager.createNativeQuery("ALTER TABLE mouse AUTO_INCREMENT = 3000").executeUpdate();
+            entityManager.createNativeQuery("ALTER TABLE teclado AUTO_INCREMENT = 2000").executeUpdate();
+            entityManager.createNativeQuery("ALTER TABLE notebook AUTO_INCREMENT = 4000").executeUpdate();
+            System.out.println("✅ Valores AUTO_INCREMENT configurados");
+        } catch (Exception e) {
+            System.out.println("⚠️ No se pudieron configurar AUTO_INCREMENT (puede ser la primera ejecución): " + e.getMessage());
+        }
     }
 }
