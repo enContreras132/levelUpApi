@@ -254,7 +254,22 @@ public class DatabaseSeeder implements CommandLineRunner {
         audifono1.setInalambrico("No");
         audifono1.setColor("Negro");
         audifono1.setBotonesCant(3);
-        audifono1.setDescripcion("Los audífonos Gamers de Altec Lansing ALGH9602 con USB 7.1 son flexibles y están diseñados para durar.");
+        audifono1.setDescripcion("<h3>Audífonos Gamer RGB Altec Lansing GH9602</h3>\r\n" + //
+                        "\r\n" + //
+                        "<p>Los audífonos Gamers de Altec Lansing con <strong>USB 7.1</strong> son flexibles y están diseñados para durar, capaces de resistir el uso diario sin preocupaciones.</p>\r\n" + //
+                        "\r\n" + //
+                        "<p><strong>Rendimiento y Confort:</strong><br>\r\n" + //
+                        "Sus materiales de alta calidad y diseño ultra cómodo son clave en la línea Evolution. Equipado con <strong>controladores de neodimio de 40 mm</strong>, micrófono integrado y controles de navegación, está listo para disfrutar de horas de uso sin molestias.</p>\r\n" + //
+                        "\r\n" + //
+                        "<p><strong>Características Técnicas:</strong></p>\r\n" + //
+                        "<ul>\r\n" + //
+                        "    <li><strong>Sonido:</strong> Frecuencia 20Hz-20KHz | Impedancia 36 Ohms</li>\r\n" + //
+                        "    <li><strong>Micrófono:</strong> Cardioide (Unidireccional)</li>\r\n" + //
+                        "    <li><strong>Conexión:</strong> USB 7.1</li>\r\n" + //
+                        "    <li><strong>Drivers:</strong> 40 mm</li>\r\n" + //
+                        "    <li><strong>Dimensiones:</strong> 18.9 x 18 x 7.9 cm</li>\r\n" + //
+                        "    <li><strong>Peso:</strong> 240 g</li>\r\n" + //
+                        "</ul>.");
         audifono1.setUrlImagen("https://www.hites.com/on/demandware.static/-/Sites-mastercatalog_HITES/default/dw64a8ce06/images/original/mkp/1017300180100/10173001801001_1.jpg");
         audifonoRepository.save(audifono1);
 
@@ -267,7 +282,21 @@ public class DatabaseSeeder implements CommandLineRunner {
         audifono2.setInalambrico("No");
         audifono2.setColor("Negro");
         audifono2.setBotonesCant(3);
-        audifono2.setDescripcion("Audífonos Gamer Monster Loud 550BK. Formato Headset, con micrófono, compatible con Ps4 / Nswitch / X-one.");
+        audifono2.setDescripcion("<h3>Audífonos Gamer Monster Games Fire 7.1</h3>\r\n" + //
+                        "\r\n" + //
+                        "<p><strong>Sonido envolvente, estilo RGB y comodidad desde el primer uso.</strong></p>\r\n" + //
+                        "\r\n" + //
+                        "<p>Sumérgete en tus partidas con estos audífonos <em>over-ear</em> que combinan sonido virtual 7.1, retroiluminación RGB y un diseño ergonómico para largas sesiones de gaming. Listos para usar desde que los enchufas, sin complicaciones.</p>\r\n" + //
+                        "\r\n" + //
+                        "<p><strong>Especificaciones Técnicas:</strong></p>\r\n" + //
+                        "<ul>\r\n" + //
+                        "    <li><strong>Sonido:</strong> Virtual USB 7.1 Surround (Inmersivo)</li>\r\n" + //
+                        "    <li><strong>Drivers:</strong> 50 mm (Sonido claro y potente)</li>\r\n" + //
+                        "    <li><strong>Conectividad:</strong> USB (Plug & Play)</li>\r\n" + //
+                        "    <li><strong>Cable:</strong> 1.8 metros con control de volumen integrado</li>\r\n" + //
+                        "    <li><strong>Micrófono:</strong> Integrado (Ideal para chat)</li>\r\n" + //
+                        "    <li><strong>Compatibilidad:</strong> PC, Notebooks y Mac</li>\r\n" + //
+                        "</ul>.");
         audifono2.setUrlImagen("https://media.falabella.com/falabellaCL/146608981_01/w=800,h=800,fit=pad");
         audifonoRepository.save(audifono2);
 
@@ -288,7 +317,17 @@ public class DatabaseSeeder implements CommandLineRunner {
         mouse1.setBotonesCant(6);
         mouse1.setDpiMin(100);
         mouse1.setDpiMax(1000); // 1000 DPI según los datos del script SQL
-        mouse1.setDescripcion("Mouse Gamer Monster RGB Wired. Diseño ergonómico con iluminación RGB personalizable y 6 botones programables.");
+        mouse1.setDescripcion("<h3>Mouse Gamer Monster RGB</h3>\r\n" + //
+                        "\r\n" + //
+                        "<p>El <strong>Monster Storm</strong> es un mouse diseñado para jugadores y usuarios que buscan un rendimiento óptimo. Ofrece una respuesta rápida, precisión en juegos y un cable trenzado que garantiza mayor durabilidad.</p>\r\n" + //
+                        "\r\n" + //
+                        "<p><strong>Características Principales:</strong></p>\r\n" + //
+                        "<ul>\r\n" + //
+                        "    <li><strong>DPI Ajustable:</strong> 6 niveles (800 / 1600 / 2400 / 3200 / 4000 / 8000).</li>\r\n" + //
+                        "    <li><strong>Iluminación RGB:</strong> Efectos visuales personalizables con botón dedicado para modificar luces al instante.</li>\r\n" + //
+                        "    <li><strong>Botones:</strong> 6 botones funcionales para diferentes necesidades de juego.</li>\r\n" + //
+                        "    <li><strong>Conectividad:</strong> Cable trenzado de 1.5 metros (anti-enredos).</li>\r\n" + //
+                        "</ul>");
         mouse1.setUrlImagen("https://i.bolder.run/r/czozMjIxLGc6NjkweA/477efa0d/711248-Mouse_B1.png");
         mouseRepository.save(mouse1);
 
@@ -303,7 +342,18 @@ public class DatabaseSeeder implements CommandLineRunner {
         mouse2.setBotonesCant(5);
         mouse2.setDpiMin(2000); // DPI mínimo 2000 según los datos del script SQL
         mouse2.setDpiMax(20000); // DPI máximo 20000 según los datos del script SQL
-        mouse2.setDescripcion("El Razer Cobra Pro HyperSpeed es un mouse gamer inalámbrico que ofrece una precisión excepcional y una conectividad sin interrupciones gracias a la tecnología HyperSpeed de Razer.");
+        mouse2.setDescripcion("<h3>Mouse Gamer Razer Cobra Pro Hyperspeed</h3>\r\n" + //
+                        "\r\n" + //
+                        "<p>El Razer Cobra Pro es un mouse diseñado especialmente para videojuegos, ofreciendo características avanzadas como tecnología <strong>Razer Chroma RGB</strong>, conectividad inalámbrica <strong>Razer HyperSpeed</strong>, y un diseño ligero y cómodo para adaptarse a diferentes estilos de agarre.</p>\r\n" + //
+                        "\r\n" + //
+                        "<p>Con controles programables, iluminación personalizable, y un sensor óptico de alta precisión, este mouse está diseñado para brindar una experiencia de juego inmersiva y de alto rendimiento.</p>\r\n" + //
+                        "\r\n" + //
+                        "<p><strong>Características Claves:</strong></p>\r\n" + //
+                        "<ul>\r\n" + //
+                        "    <li><strong>Conectividad:</strong> Razer™ HyperSpeed Wireless (2.4 GHz) | Bluetooth | Speedflex USB</li>\r\n" + //
+                        "    <li><strong>Iluminación:</strong> Razer Chroma™ RGB (Inferior, rueda y logotipo)</li>\r\n" + //
+                        "    <li><strong>Sensor:</strong> Óptico Focus Pro de 30.000 DPI</li>\r\n" + //
+                        "</ul>");
         mouse2.setUrlImagen("https://www.winpy.cl/files/w38389_razer_cobra_pro_hyperspeed_00.jpg");
         mouseRepository.save(mouse2);
 
@@ -324,7 +374,11 @@ public class DatabaseSeeder implements CommandLineRunner {
         teclado1.setDimension(75);
         teclado1.setTipo("Mecanico");
         teclado1.setSwitches("Mechanical Outemu Blue");
-        teclado1.setDescripcion("La iluminación del Kumara K-552 RGB consta de teclas retroiluminadas configurables mediante software independiente.");
+        teclado1.setDescripcion("<h1>UN TKL MUY FUERTE</h1>\r\n" + //
+                        "\r\n" + //
+                        "<p>Un best-seller aclamado, y con razón. El Kumara es un teclado mecánico TKL (sin pad numérico); compacto, pero ampliamente funcional. Y fuerte —muy fuerte—, gracias a que su estructura está reforzada con acero. Es virtualmente irrompible y tiene una durabilidad extraordinaria.</p>\r\n" + //
+                        "\r\n" + //
+                        "<p>Todos sus componentes están diseñados para soportar las exigencias del juego competitivo de alta intensidad. Está preparado para resistir, además, derrames y salpicaduras, gracias a su sistema de drenando y sus switches tipo box.</p>");
         teclado1.setUrlImagen("https://i.bolder.run/r/czozMjIxLGc6NjkweA/2d37a7fc/736207-Kumara1.png");
         tecladoRepository.save(teclado1);
 
@@ -339,7 +393,21 @@ public class DatabaseSeeder implements CommandLineRunner {
         teclado2.setDimension(65);
         teclado2.setTipo("Mecanico");
         teclado2.setSwitches("Mechanical RK Blue");
-        teclado2.setDescripcion("Diseñado para gamers y creadores que buscan control total y rendimiento insuperable. Ideal para aficionados, semiprofesionales y profesionales.");
+        teclado2.setDescripcion("<h3>RK Royal Kludge R65 Phantom</h3>\r\n" + //
+                        "\r\n" + //
+                        "<p>Teclado Mecánico Español de Juego con Cable y Perilla de Volumen. Formato 60% RGB Retroiluminado con Montaje de Junta y Tapas de Teclas PBT.</p>\r\n" + //
+                        "\r\n" + //
+                        "<ul>\r\n" + //
+                        "    <li><strong>Switches:</strong> Crema Intercambiable en Caliente (Hot-Swap)</li>\r\n" + //
+                        "    <li><strong>Cantidad de teclas:</strong> 66 Teclas</li>\r\n" + //
+                        "    <li><strong>Color:</strong> Negro</li>\r\n" + //
+                        "</ul>\r\n" + //
+                        "\r\n" + //
+                        "<p><strong>Acerca de Kludge R65 (Gasket Mount):</strong><br>\r\n" + //
+                        "El teclado compacto para juegos adopta una estructura de junta con cinco capas de material de absorción de sonido. Hay algodón poron para amortiguar entre la placa PCB del teclado y la carcasa, lo que reduce eficazmente el ruido y la vibración, optimiza el sonido de los interruptores y proporciona una mejor experiencia de escritura.</p>\r\n" + //
+                        "\r\n" + //
+                        "<p><strong>Botón de volumen de metal y luces indicadoras:</strong><br>\r\n" + //
+                        "Equipado con una perilla de metal CNC de aluminio de alta calidad. Puede ajustar rápidamente el volumen girando el mando y pulsarlo para activar/desactivar el sonido. Incluye tres luces indicadoras junto a las teclas de flecha para ver el estado del teclado de un vistazo.</p>");
         teclado2.setUrlImagen("https://www.chilegatillos.cl/cdn/shop/files/TecladoRKRoyalKludgeR65chilegatillos.cl.jpg?v=1717042966&width=2048");
         tecladoRepository.save(teclado2);
 
@@ -360,7 +428,21 @@ public class DatabaseSeeder implements CommandLineRunner {
         notebook1.setRam("16gb");
         notebook1.setMemoria("512GB SSD");
         notebook1.setTarjetaVideo("NVIDIA GeForce RTX 2050");
-        notebook1.setDescripcion("Notebook gamer con Windows 11, 512GB de almacenamiento, 16GB RAM y pantalla FHD de 15,6 pulgadas.");
+        notebook1.setDescripcion("<h3>Notebook Gamer Acer Nitro V15</h3>\r\n" + //
+                        "\r\n" + //
+                        "<p>La <strong>Acer Nitro V (ANV15-51-53W1-1)</strong> es la elección perfecta para los entusiastas de los videojuegos que buscan rendimiento y estilo. Esta máquina está diseñada para ofrecer una experiencia de juego fluida y envolvente gracias a su hardware de última generación.</p>\r\n" + //
+                        "\r\n" + //
+                        "<p><strong>Especificaciones Principales:</strong></p>\r\n" + //
+                        "<ul>\r\n" + //
+                        "    <li><strong>Procesador:</strong> Intel Core i5 de 13ª generación</li>\r\n" + //
+                        "    <li><strong>Gráfica:</strong> NVIDIA GeForce RTX 2050</li>\r\n" + //
+                        "    <li><strong>Pantalla:</strong> 15.6\" Full HD con 165 Hz de refresco</li>\r\n" + //
+                        "    <li><strong>Memoria:</strong> 16 GB RAM DDR5 (Multitarea excepcional)</li>\r\n" + //
+                        "    <li><strong>Almacenamiento:</strong> 512 GB SSD (Arranque rápido)</li>\r\n" + //
+                        "</ul>\r\n" + //
+                        "\r\n" + //
+                        "<p><strong>Diseño y Portabilidad:</strong><br>\r\n" + //
+                        "Con una duración de batería de hasta 8 horas y un peso de solo 2.1 kg, es ideal para gamers en movimiento. Su diseño en color negro y teclado retroiluminado le otorgan un toque moderno. Además, cuenta con conectividad total mediante Wi-Fi y Bluetooth.</p>");
         notebook1.setUrlImagen("https://www.acerstore.cl/cdn/shop/files/1_ANV15-51-53W1-1.png?v=1753392522&width=533");
         notebookRepository.save(notebook1);
 
