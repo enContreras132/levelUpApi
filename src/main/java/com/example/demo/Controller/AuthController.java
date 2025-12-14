@@ -27,7 +27,8 @@ public class AuthController {
     private ClienteRepository clienteRepository;
 
     // LOGIN REAL CON BASE DE DATOS
-    @PostMapping({"/login", "/usuario/login"})
+    // Aceptar varias rutas por compatibilidad con el frontend
+    @PostMapping({"/login", "/usuario/login", "/cliente/login", "/admin/login"})
     public ResponseEntity<?> login(@RequestBody Map<String, String> credenciales) {
         String correo = credenciales.get("username");
         String password = credenciales.get("password");
