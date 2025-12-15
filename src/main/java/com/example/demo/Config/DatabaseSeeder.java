@@ -28,7 +28,12 @@ public class DatabaseSeeder implements CommandLineRunner {
     @Override
     @Transactional
     public void run(String... args) throws Exception {
-       
+        // Verificar si la base de datos ya está poblada
+        if (adminRepository.count() > 0) {
+            System.out.println("📊 Base de datos poblada, seeder omitido");
+            return;
+        }
+        
         System.out.println("🌱 Iniciando seeder de base de datos...");
         
         // Configurar AUTO_INCREMENT inicial para las tablas de productos
