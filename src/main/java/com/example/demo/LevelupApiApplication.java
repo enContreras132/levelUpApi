@@ -44,6 +44,10 @@ public class LevelupApiApplication {
                 .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
                 
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/**").permitAll()
+                .requestMatchers(HttpMethod.POST, "/**").permitAll()
+                .requestMatchers(HttpMethod.PUT, "/**").permitAll()
+                .requestMatchers(HttpMethod.DELETE, "/**").permitAll()
                 .requestMatchers("/login", "/usuario/login").permitAll()
                 
                 // PERMITIR TODOS LOS ENDPOINTS DE LA API (TEMPORAL PARA DESARROLLO) eliminar mas adelante

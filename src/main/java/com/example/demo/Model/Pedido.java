@@ -35,8 +35,13 @@ public class Pedido {
     @Column(nullable = false)
     private int monto_total;
 
+    @Column(nullable = false)
+    private String estado;
+
     @PrePersist
     protected void onCreate() {
         fecha_hora = LocalDateTime.now();
     }
+
+
 }

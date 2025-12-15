@@ -1,6 +1,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Model.Pedido;
+import com.example.demo.Repository.PedidoRepository;
 import com.example.demo.Service.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,9 @@ public class PedidoController {
 
     @Autowired
     PedidoService pedidoService;
+    
+    @Autowired
+    PedidoRepository pedidoRepository;
 
     @GetMapping
     public List<Pedido> getAllPedidos(){
@@ -45,4 +49,6 @@ public class PedidoController {
         return updated.map(ResponseEntity::ok)
                       .orElse(ResponseEntity.notFound().build());
     }
+
+   
 }

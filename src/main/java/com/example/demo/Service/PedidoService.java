@@ -50,6 +50,7 @@ public class PedidoService {
             pedidoExistente.setDireccion(nuevosDatosPedido.getDireccion());
             pedidoExistente.setComuna(nuevosDatosPedido.getComuna());
             pedidoExistente.setMonto_total(nuevosDatosPedido.getMonto_total());
+            pedidoExistente.setEstado(nuevosDatosPedido.getEstado());
 
             return Optional.of(pedidoRepository.save(pedidoExistente));
         }else{
